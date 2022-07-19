@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.TPredictScoreMapper">
+
+
+    <select id="selectPredictScore" resultType="com.exam.entity.TPredictScore">
+        SELECT * FROM t_predict_score
+            WHERE `subject_id` = #{subjectId}
+            AND `student_id` = #{studentId}
+            AND `time` = #{date}
+    </select>
+    <select id="getPredictScore" resultType="com.exam.entity.vo.PredictScoreVO">
+
+         SELECT `time`,`score` FROM t_predict_score
+            WHERE `subject_id` = #{subject}
+            AND `student_id` = #{userId}
+            ORDER BY TIME DESC
+            LIMIT 7
+    </select>
+</mapper>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.TQuestionMapper">
+
+    <resultMap id="QuestionVO" type="com.exam.entity.vo.QuestionVO">
+        <id column="id" property="id"/>
+        <result column="question_type" property="questionType"/>
+        <result column="subject" property="subject"/>
+        <result column="level" property="level"/>
+        <result column="level_name" property="levelName"/>
+        <result column="score" property="score"/>
+        <result column="difficult" property="difficult"/>
+        <result column="question_content" property="questionContent"/>
+        <result column="right_answer" property="rightAnswer"/>
+        <result column="analysis" property="analysis"/>
+        <collection property="items" ofType="com.exam.entity.TChoiceItem">
+            <id property="id" column="item_id"/>
+            <result property="prefix" column="prefix"/>
+            <result property="content" column="content"/>
+        </collection>
+
+    </resultMap>
+
+    <resultMap id="QuestionTableVO" type="com.exam.entity.vo.QuestionTableVO">
+        <id column="id" property="id"/>
+        <result column="question_type" property="questionType"/>
+        <result column="question_type_name" property="questionTypeName"/>
+        <result column="name" property="subject"/>
+        <result column="level" property="level"/>
+        <result column="level_name" property="levelName"/>
+        <result column="score" property="score"/>
+        <result column="difficult" property="difficult"/>
+        <result column="question_content" property="questionContent"/>
+        <result column="create_time" property="createTime"/>
+        <collection property="items"
+                    select="com.exam.mapper.TChoiceItemMapper.selectChoiceItem"
+                    column="id"/>
+
+    </resultMap>
+
+    <resultMap id="ChoiceItem" type="com.exam.entity.TChoiceItem">
+        <id column="choice_id" property="id"/>
+        <result column="prefix" property="prefix"/>
+        <result column="content" property="content"/>
+    </resultMap>
+
+    <select id="selectQuestion" resultMap="QuestionTableVO">
+        SELECT
+        qu.id,qu.`level`,s.`name`,s.`level_name`,qu.`question_type`,qu.`question_type_name`,qu.`question_content`,qu.`score`,qu.`difficult`,qu.`create_time`
+        FROM t_question qu
+        LEFT JOIN t_subject s ON qu.subject = s.id
+        WHERE
+        `question_content` LIKE CONCAT("%",#{keyword},"%")
+        <if test="subject != ''">
+            AND qu.`subject` = #{subject}
+        </if>
+
+        <if test="questionType != 0">
+            AND `question_type` = #{questionType}
+        </if>
+        order by `create_time` desc
+
+
+    </select>
+
+
+    <select id="selectQuestionById" resultMap="QuestionVO">
+        SELECT
+        qu.id,qu.`question_type`,qu.`level`,qu.`subject`,qu.`question_content`,ch.`id` item_id,ch.`prefix`,ch.`content`,qu.`right_answer`,qu.`analysis`,qu.`score`,qu.`difficult`,qu.`create_time`
+        FROM t_question qu
+        LEFT JOIN `t_choice_item` ch ON ch.`question_id` = qu.id
+        WHERE qu.`id` = #{id}
+
+    </select>
+    <select id="selectPoints" resultType="com.exam.entity.TKnowledgePoint">
+        SELECT
+        po.id,po.`knowledge_point_name`,po.`level`
+        FROM t_question qu
+        LEFT JOIN `knowledge_point_to_question` pq ON pq.`question_id` = qu.id
+        LEFT JOIN `t_knowledge_point` po ON po.id = pq.`knowledge_point_id`
+        WHERE qu.`id` = #{id}
+    </select>
+
+    <select id="selectQuestionForUser" resultType="com.exam.entity.vo.QuestionVO">
+        SELECT q.* FROM t_question q
+        LEFT JOIN knowledge_point_to_question pq ON q.id = pq.`question_id`
+        WHERE q.question_type = #{questionType}
+        and q.id not in (select question_id from student_to_question where student_id=#{userId})
+        <if test="pointId != ''">
+            and pq.`knowledge_point_id` = #{pointId}
+        </if>
+        <if test="id != null">
+             and q.`subject`= #{id}
+        </if>
+        GROUP BY pq.`question_id`
+        LIMIT  #{questionNum}
+    </select>
+
+
+</mapper>

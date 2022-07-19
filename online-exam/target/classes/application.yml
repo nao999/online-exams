@@ -1,0 +1,31 @@
+server:
+  port: 8000
+spring:
+  profiles:
+    active: dev
+  # mysql数据库连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/online_exam?serverTimezone=GMT%2B8
+    username: root
+    password: nao6854267464
+  #返回json的全局时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # 配置redis
+  redis:
+    host: 42.193.125.212
+    password: nao6854267464
+#mybatis日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/*.xml
+aliyun:
+  oss:
+    end-point: http://oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tDDksei6jyY3ZyfANg7
+    bucket-name: nao190830
+    bucket-domain: http://nao190830.oss-cn-beijing.aliyuncs.com
+    access-key-secret: T8Xa6EPQvp7mN2H9l1MU0LlCkPkOTd

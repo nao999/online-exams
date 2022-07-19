@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.TTaskMapper">
+
+
+
+    <select id="selectTasks" resultType="com.exam.entity.vo.TaskVO">
+        SELECT ta.id,ta.`level`,ta.`level_name`,ta.`title`,p.`paper_title` paper,ta.`create_time`
+            FROM t_task ta
+            LEFT JOIN t_paper p ON ta.`paper`=p.`id`
+            WHERE ta.`level` = #{level}
+            order by p.`create_time` desc
+    </select>
+    <select id="selectStuTasks" resultType="com.exam.entity.vo.TaskVO">
+         SELECT ta.id,ta.`level`,ta.`level_name`,ta.`title`,p.`paper_title` paper,ta.`create_time`
+            FROM t_task ta
+            LEFT JOIN t_paper p ON ta.`paper`=p.`id`
+            WHERE ta.`level` = #{level}
+            <if test="subjectId != ''">
+                AND p.`subject` = #{subjectId}
+            </if>
+            order by p.`create_time` desc
+    </select>
+    <select id="getUnfinishedTask" resultType="com.exam.entity.vo.TaskVO">
+        SELECT * FROM t_task t
+        LEFT JOIN t_task_result tr ON t.`id` = tr.`task_id`
+        LEFT JOIN t_paper p ON t.`paper` = p.`id`
+        WHERE t.`level` = ${level} AND
+        ISNULL(tr.`id`) = 1;
+    </select>
+</mapper>

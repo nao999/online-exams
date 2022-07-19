@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.TPaperItemMapper">
+
+    <resultMap id="PaperItem" type="com.exam.entity.vo.PaperItem">
+        <id column="id" property="id"/>
+        <result property="questionItemId" column="question_item_id"/>
+        <result property="questionTitle" column="title"/>
+        <result property="questionNum" column="question_num"/>
+        <result property="totalScore" column="total_score"/>
+        <collection property="questionContent" ofType="com.exam.entity.vo.QuestionVO">
+            <id property="id" column="question_id"/>
+            <result property="questionType" column="question_type"/>
+            <result property="subject" column="subject"/>
+            <result property="score" column="score"/>
+            <result property="level" column="level"/>
+            <result property="questionContent" column="question_content"/>
+            <result property="rightAnswer" column="right_answer"/>
+            <result property="analysis" column="analysis"/>
+            <result property="difficult" column="difficult"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectPaperItem" resultMap="PaperItem">
+        SELECT pitem.id,pitem.`title`,pitem.`total_score`,pitem.`question_num`,pitem.`question_item_id`,
+        q.`id` question_id,q.`question_type`,q.`subject`,q.`score`,q.`level`,q.`question_content`,q.`difficult`,q.`right_answer`,q.`analysis`
+        FROM t_paper_item pitem
+        LEFT JOIN `paper_item_to_question` pq ON pitem.`id` = pq.`paper_item_id`
+        LEFT JOIN `t_question` q ON pq.`question_id` = q.`id`
+        WHERE paper_id = #{id};
+	</select>
+</mapper>

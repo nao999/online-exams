@@ -1,0 +1,184 @@
+{
+  "id": "2668190",
+  "name": "online-exam",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3401997",
+      "name": "亚军",
+      "font_class": "yajun1",
+      "unicode": "e6b1",
+      "unicode_decimal": 59057
+    },
+    {
+      "icon_id": "3402022",
+      "name": "冠军",
+      "font_class": "guanjun",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "3402049",
+      "name": "季军",
+      "font_class": "jijun",
+      "unicode": "e6b3",
+      "unicode_decimal": 59059
+    },
+    {
+      "icon_id": "4568613",
+      "name": "亚军",
+      "font_class": "yajun",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "1305472",
+      "name": "任务",
+      "font_class": "renwu1",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "11032212",
+      "name": "设备动态",
+      "font_class": "shebeidongtai",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "4880139",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "18615408",
+      "name": "down",
+      "font_class": "down1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "19879375",
+      "name": "down",
+      "font_class": "down",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "8156102",
+      "name": "任务",
+      "font_class": "renwu",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "7464490",
+      "name": "考点",
+      "font_class": "kaodian",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
+      "icon_id": "6793431",
+      "name": "答对",
+      "font_class": "dadui",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "4844696",
+      "name": "解析",
+      "font_class": "GroupCopy",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "14581489",
+      "name": "倒计时",
+      "font_class": "shizhong",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "16376874",
+      "name": "尺码",
+      "font_class": "biaoqianA01_chima-03",
+      "unicode": "ea8c",
+      "unicode_decimal": 60044
+    },
+    {
+      "icon_id": "22032823",
+      "name": "试卷",
+      "font_class": "shijuan1",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "6378037",
+      "name": "快速开始",
+      "font_class": "kuaisukaishi",
+      "unicode": "e787",
+      "unicode_decimal": 59271
+    },
+    {
+      "icon_id": "14733218",
+      "name": "试卷",
+      "font_class": "shijuan",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "6861207",
+      "name": "题库",
+      "font_class": "exam_item_bank",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    },
+    {
+      "icon_id": "8465799",
+      "name": "知识点",
+      "font_class": "zhishidian",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "17682359",
+      "name": "学科",
+      "font_class": "xueke",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "22490041",
+      "name": "主页",
+      "font_class": "shanchu-01",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "22281183",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e6f1",
+      "unicode_decimal": 59121
+    },
+    {
+      "icon_id": "20861923",
+      "name": "用户",
+      "font_class": "zu704",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "21020334",
+      "name": "密 码",
+      "font_class": "mima",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    }
+  ]
+}

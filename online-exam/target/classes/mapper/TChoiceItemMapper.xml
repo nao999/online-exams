@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.TChoiceItemMapper">
+<!--    List<TChoiceItem> selctChoiceItem(String id);-->
+    <select id="selectChoiceItem" resultType="com.exam.entity.TChoiceItem">
+        select id,prefix,content
+            from t_choice_item where question_id = #{id};
+    </select>
+</mapper>

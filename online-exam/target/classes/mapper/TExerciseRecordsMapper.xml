@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.mapper.TExerciseRecordsMapper">
+
+    <select id="getExerciseList" resultType="com.exam.entity.vo.ExerciseRecordVO">
+        SELECT id,exercise_type,exercise_type_name,`time`,create_time
+        FROM t_exercise_records
+        WHERE `student_id` = #{studentId}
+        ORDER BY create_time DESC LIMIT 5
+    </select>
+    <select id="selectTime" resultType="java.lang.String">
+        SELECT `time`
+	    FROM t_exercise_records
+	    WHERE `student_id`=#{studentId}
+	    <if test="subject!=''">
+            AND `subject_id` = #{subject}
+        </if>
+    </select>
+</mapper>
